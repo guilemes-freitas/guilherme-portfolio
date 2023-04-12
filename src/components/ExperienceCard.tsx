@@ -14,7 +14,7 @@ function ExperienceCard({ experience }: Props) {
     cursor-pointer transition-opacity duration-200 overflow-y-scroll scrollbar-thin scrollbar-track-black scrollbar-thumb-greenBlue '>
         <motion.img
           initial={{
-            y:-200,
+            y:-50,
             opacity:0,
           }}
           transition={{ duration: 1.2 }}
