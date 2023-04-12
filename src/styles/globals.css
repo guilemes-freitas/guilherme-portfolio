@@ -3,25 +3,98 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --greenBlue: #1768AC;
+  --cambridgeBlue: #87CBAC;
+  --bg-color: rgb(20, 20, 20);
+  --card-color: rgb(23, 23, 23);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@layer components{
+  .heroButton{
+    @apply px-6 py-2 rounded-full uppercase text-xs tracking-widest text-white 
+    transition-all hover:border hover:border-cambridgeBlue/80 hover:text-cambridgeBlue/80 pointer-events-auto
+  }
+
+  .contactInput{
+    @apply outline-none bg-slate-400/10 rounded-sm border-b px-6 py-4 border-[#242424] text-gray-200 placeholder-gray-200 transition-all focus:border-greenBlue/40
+    focus:text-greenBlue/40 hover:border-greenBlue/40
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@keyframes background-pan {
+  from {
+    background-position: 0% center;
+  }
+
+  to {
+    background-position: -200% center;
+  }
+}
+
+#hero{
+  animation: background-pan 10s linear infinite;
+}
+
+#hero.toggled {
+  animation: none;
+}
+
+#hero.toggled > #title {
+  opacity: 0;
+}
+
+#hero.toggled > #text {
+  opacity: 1;
+}
+
+#hero.toggled > #tiles > .tile:hover {
+  opacity: 0.1 !important;
+}
+
+#tiles {
+  height: calc(100vh - 1px);
+  width: calc(100vw - 1px);
+  z-index: 2;
+
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  grid-template-rows: repeat(var(--rows), 1fr);
+}
+
+.tile {
+  cursor: pointer;
+  position: relative;
+}
+
+.tile:hover:before {
+  background-color: #1e1e1e;
+}
+
+.tile:before {
+  background-color: #0f0f0f;
+  content: "";
+  inset: 0.5px;
+  position: absolute;
+}
+
+#title > .fancy {
+  color: var(--cambridgeBlue);
+  font-size: 1.5em;
+  line-height: 0.9em;
+}
+
+.card::before {
+  background: radial-gradient(
+    600px circle at var(--mouse-x) var(--mouse-y), 
+    var(--cambridgeBlue),
+    transparent 40%
+  );
+}
+
+.card::after {  
+  background: radial-gradient(
+    400px circle at var(--mouse-x) var(--mouse-y), 
+    var(--cambridgeBlue),
+    transparent 40%
+  );
 }
