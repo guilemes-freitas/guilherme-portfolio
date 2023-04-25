@@ -1,4 +1,4 @@
-import {definePlugin} from 'sanity/lib/exports'
+import {definePlugin} from 'sanity'
 import {CustomDefaultLayout} from './CustomDefaultLayout'
 
 export const getStartedPlugin = definePlugin({

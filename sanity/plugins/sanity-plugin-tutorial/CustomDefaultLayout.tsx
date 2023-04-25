@@ -1,5 +1,5 @@
 import React from 'react'
-import {LayoutProps, useCurrentUser} from 'sanity/lib/exports'
+import {LayoutProps, useCurrentUser} from 'sanity'
 import {GetStartedTutorial} from './GetStartedTutorial'
 
 export function CustomDefaultLayout(props: LayoutProps) {

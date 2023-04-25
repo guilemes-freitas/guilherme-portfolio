@@ -21,13 +21,13 @@ function Projects({projects}: Props) {
       transition={{ duration: 1.5 }}
        className='relative w-full flex overflow-x-scroll overflow-y-hidden snap-x snap-mandatory z-20 scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-greenBlue'>
         {projects.map((project,i) =>(
-          <div key={project._id} className='w-screen flex-shrink-0 snap-center flex flex-col space-y-5 items-center justify-center p-20 md:p-44 h-screen'>
+          <div key={project._id} className='w-screen flex-shrink-0 snap-center flex flex-col space-y-5 items-center justify-center sm:p-20 md:p-44 h-screen p-4'>
             <motion.img 
               initial={{ opacity:0, y:-300 }}
               whileInView={{ opacity:1, y:0 }}
               transition={{ duration: 1.5 }}
               viewport={{ once: true }}
-              src={urlFor(project.image).url()} alt="" className='h-96'/>
+              src={urlFor(project.image).url()} alt="" className='h-48 sm:h-96'/>
             
             <div className='space-y-1 px-0 md:px-10 max-w-6xl 2xl:space-y-10'>
               <h4 className='text-2xl font-semibold text-center 2xl:text-4xl'>
@@ -44,7 +44,7 @@ function Projects({projects}: Props) {
                 ))}
 
               </div>
-              <p className='text-sm text-center md:text-left 2xl:text-lg'>
+              <p className='text-sm text-center md:text-left 2xl:text-lg overflow-y-scroll max-h-32 md:overflow-visible'>
                 {project.summary}
               </p>
             </div>
